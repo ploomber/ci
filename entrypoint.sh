@@ -4,6 +4,9 @@ set -e
 set -u
 set -x
 
+cd $1
+
+
 if [ -f "environment.yml" ]; then
     echo "Setting up conda environment..."
     conda env create --file environment.yml --force --name env
