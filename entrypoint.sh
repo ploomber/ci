@@ -6,6 +6,13 @@ set -x
 
 cd $1
 
+if [ -f "prepare.sh" ]; then
+    echo "Running prepare.sh..."
+    bash prepare.sh
+else
+    echo "prepare.sh file does not exist, skipping..."
+fi
+
 
 if [ -f "environment.yml" ]; then
     echo "Setting up conda environment..."
