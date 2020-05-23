@@ -1,0 +1,14 @@
+name: Ploomber CI
+decription: Continuous Integration for Data Science pipelines
+
+inputs:
+  path:
+    description: Relative path in the repo to move before executing the action
+    required: false
+    default: .
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.path }}
