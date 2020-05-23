@@ -23,3 +23,7 @@ if [ -f "requirements.txt" ]; then
 else
     echo "requirements.txt file does not exist, skipping..."
 fi
+
+
+# build pipeline from spec
+python -m ploomber.dag.DAGSpec pipeline.yaml --action build --log INFO
