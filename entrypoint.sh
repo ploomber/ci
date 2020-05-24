@@ -8,7 +8,7 @@ cd $1
 
 if [ -f "prepare.sh" ]; then
     echo "Running prepare.sh..."
-    bash prepare.sh
+    source prepare.sh
 else
     echo "prepare.sh file does not exist, skipping..."
 fi
@@ -32,5 +32,28 @@ else
 fi
 
 
-# build pipeline from spec
-python -m ploomber.dag.DAGSpec pipeline.yaml --action build --log INFO
+if [ -f "setup.py" ]; then
+    echo "Installing from setup.py..."
+    pip install .
+else
+    echo "No setup.py found, skipping..."
+fi
+
+
+if [ python -c "import ploomber" ]; then
+    echo "Ploomber is not installed"
+    conda install pygraphviz --yes
+    pip install "git+https://github.com/ploomber/ploomber.git#egg=ploomber[all]"
+else
+    echo "Ploomber already installed, skippping..."
+fi
+
+
+if [ -f "pipeline.yaml" ]; then
+    echo "Running pipeline from yaml spec..."
+    python -m ploomber.dag.DAGSpec pipeline.yaml --action build --log INFO
+elif [ -f "pipeline.py" ]; then
+    echo "Runninb pipeline.py"
+    python pipeline.py
+fi
+
