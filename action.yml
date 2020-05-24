@@ -1,5 +1,9 @@
 name: Ploomber CI
-decription: Continuous Integration for Data Science pipelines
+description: Automatically run Jupyter notebook pipelines on each push to ensure reproducibility
+
+branding:
+  icon: book-open
+  color: gray-dark
 
 inputs:
   path:
