@@ -1,5 +1,5 @@
 name: Ploomber CI
-description: Automatically run Jupyter notebook pipelines on each push to ensure reproducibility
+description: Make sure your Data Science pipeline is reproducible by automatically running it each time you push to your repository.
 
 branding:
   icon: book-open

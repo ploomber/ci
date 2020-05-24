@@ -1,7 +1,6 @@
 # Ploomber CI
 
-Make sure your Data Science is reproducible by automatically testing it each time you push to your repository.
-
+Make sure your Data Science pipeline is reproducible by automatically running it each time you push to your repository.
 
 
 ## How it works
@@ -11,7 +10,6 @@ On each push, Ploomber CI will do the following:
 1. Fetch your code in a clean Docker container
 2. Install dependencies using a conda `environment.yml` or `requirements.txt`
 3. Run your pipeline using a `pipeline.yaml` file
-
 
 
 ## `pipeline.yaml`
@@ -50,7 +48,7 @@ This file tells Ploomber CI how to run your pipeline, here's an example:
 Output from one task is passed to the next one by injecting a cell with parameters at runtime. Pipeline execution and parameter resolution is powered by our package [Ploomber](https://github.com/ploomber/ploomber). To know how parameters are passed between notebooks, [click here](https://ploomber.readthedocs.io/en/stable/guide/param-resolution.html#Parameter-resolution-in-NotebookRunner).
 
 
-Note: you have to make sure that any folder used for output already exists, you can include a `prepare.sh` script in your repo to ensure this:
+Note: You have to make sure that any folder used for output already exists, you can include a `prepare.sh` script in your repo to ensure this:
 
 ```bash
 # prepare.sh
@@ -59,9 +57,7 @@ mkdir output/
 
 ## Github Action
 
-Ploomber CI works as a [Github Action](https://github.com/features/actions), to activate it, include the following file in the following path: `.github/workflows/main.yaml`
-
-
+Ploomber CI works as a [Github Action](https://github.com/features/actions), to activate it, include the following file in `.github/workflows/main.yaml`:
 
 ```yaml
 # this tells Github to run this on every push
@@ -73,9 +69,8 @@ jobs:
     name: Test pipeline
     steps:
     - uses: actions/checkout@v2
-    - uses: ploomber/ci@master
+    - uses: ploomber/ci@v1.0
 ```
-
 
 
 ## Example
