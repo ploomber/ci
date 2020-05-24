@@ -48,7 +48,7 @@ This file tells Ploomber CI how to run your pipeline, here's an example:
 Output from one task is passed to the next one by injecting a cell with parameters at runtime. Pipeline execution and parameter resolution is powered by our package [Ploomber](https://github.com/ploomber/ploomber). To know how parameters are passed between notebooks, [click here](https://ploomber.readthedocs.io/en/stable/guide/param-resolution.html#Parameter-resolution-in-NotebookRunner).
 
 
-Note: You have to make sure that any folder used for output already exists, you can include a `prepare.sh` script in your repo to ensure this:
+Note: You have to make sure that any folder used for output already exists, you can include a `prepare.sh` script in your repository to ensure this:
 
 ```bash
 # prepare.sh
@@ -100,7 +100,7 @@ Or to start an interactive session:
 ipython -i -m ploomber.entry pipeline.yaml -- --action status
 ```
 
-When using the interactive mode, you can use Ploomber's debugging tools to fix errorsr in your pipeline. [Click here to know more](https://ploomber.readthedocs.io/en/stable/guide/debugging.html#Debugging-NotebookRunner-tasks).
+When using the interactive mode, you can use Ploomber's debugging tools to fix errors in your pipeline. [Click here to know more](https://ploomber.readthedocs.io/en/stable/guide/debugging.html#Debugging-NotebookRunner-tasks).
 
 
 ## Questions?
