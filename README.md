@@ -100,7 +100,7 @@ Or to start an interactive session:
 ipython -i -m ploomber.entry pipeline.yaml -- --action status
 ```
 
-When using the interactive mode, You can use Ploomber's debugging tools to fix errorsr in your pipeline. [Click here to know more](https://ploomber.readthedocs.io/en/stable/guide/debugging.html#Debugging-NotebookRunner-tasks).
+When using the interactive mode, you can use Ploomber's debugging tools to fix errorsr in your pipeline. [Click here to know more](https://ploomber.readthedocs.io/en/stable/guide/debugging.html#Debugging-NotebookRunner-tasks).
 
 
 ## Questions?
