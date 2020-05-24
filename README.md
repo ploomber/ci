@@ -47,11 +47,15 @@ This file tells Ploomber CI how to run your pipeline, here's an example:
   upstream: [clean]
 ```
 
+Output from one task is passed to the next one by injecting a cell with parameters at runtime. Pipeline execution and parameter resolution is powered by our package [Ploomber](https://github.com/ploomber/ploomber). To know how parameters are passed between notebooks, [click here](https://ploomber.readthedocs.io/en/stable/guide/param-resolution.html#Parameter-resolution-in-NotebookRunner).
 
 
-Output from one task is passed to the next one by injecting a cell with parameters at runtime. Pipeline execution and parameter resolution is powered by our package [Ploomber](https://github.com/ploomber/ploomber), which uses [papermill](https://github.com/nteract/papermill) under the hood to parametrize notebooks.
+Note: you have to make sure that any folder used for output already exists, you can include a `prepare.sh` script in your repo to ensure this:
 
-
+```bash
+# prepare.sh
+mkdir output/
+```
 
 ## Github Action
 
@@ -76,7 +80,7 @@ jobs:
 
 ## Example
 
-[Check out this example pipeline, which is tested Ploomber CI](https://github.com/ploomber/projects/tree/master/spec), you can see the result from each commit by [clicking here](https://github.com/ploomber/projects/actions?query=workflow%3Aci).
+[Check out this example pipeline](https://github.com/ploomber/projects/tree/master/spec), you can see the result from each commit by [clicking here](https://github.com/ploomber/projects/actions?query=workflow%3Aci).
 
 
 
@@ -89,17 +93,19 @@ pip install "ploomber[all]"
 ```
 
 
-
 Then run:
 
 ```bash
-python -m ploomber.entry pipeline.yaml build
+python -m ploomber.entry pipeline.yaml --action build
 ```
 
+Or to start an interactive session:
 
+```bash
+ipython -i -m ploomber.entry pipeline.yaml -- --action status
+```
 
-Ploomber offers a set of tools to debug your pipeline, click here for a tutorial.
-
+When using the interactive mode, You can use Ploomber's debugging tools to fix errorsr in your pipeline. [Click here to know more](https://ploomber.readthedocs.io/en/stable/guide/debugging.html#Debugging-NotebookRunner-tasks).
 
 
 ## Questions?
