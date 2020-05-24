@@ -40,7 +40,8 @@ else
 fi
 
 
-if [ python -c "import ploomber" ]; then
+if ! python -c "import ploomber"
+then
     echo "Ploomber is not installed"
     conda install pygraphviz --yes
     pip install "git+https://github.com/ploomber/ploomber.git#egg=ploomber[all]"
