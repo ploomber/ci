@@ -49,11 +49,6 @@ else
 fi
 
 
-if [ -f "pipeline.yaml" ]; then
-    echo "Running pipeline from yaml spec..."
-    python -m ploomber.dag.DAGSpec pipeline.yaml --action build --log INFO
-elif [ -f "pipeline.py" ]; then
-    echo "Runninb pipeline.py"
-    python pipeline.py
-fi
+echo "Running pipeline from yaml spec..."
+python -m ploomber.dag.DAGSpec pipeline.yaml --action build --log INFO
 
