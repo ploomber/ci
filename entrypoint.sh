@@ -44,12 +44,12 @@ if ! python -c "import ploomber"
 then
     echo "Ploomber is not installed"
     conda install pygraphviz --yes
-    pip install "ploomber[all]==0.4.2"
+    pip install "ploomber[all]"
 else
     echo "Ploomber already installed, skippping..."
 fi
 
 
 echo "Running pipeline from yaml spec..."
-python -m ploomber.entry pipeline.yaml --action build --log INFO
+ploomber build
 
